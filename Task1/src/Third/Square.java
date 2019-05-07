@@ -14,7 +14,7 @@ public class Square {
             double r2 = scanner.nextDouble();
 
             if (r1 < r2) {
-                System.out.println("R1 must be larger than R1. Try another values.");
+                System.out.println("R1 must be larger than R2. Try another values.");
             } else {
                 System.out.println(squareOfRing(r1, r2));
             }
