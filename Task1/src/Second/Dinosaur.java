@@ -20,7 +20,8 @@ public class Dinosaur {
                         + "Weight in grams: " + weightG + '\n'
                         + "Weight in milligrams: " + weightMg + '\n'
                         + "Weight in tons: " + weightT);
-            } else {
+            }
+            else {
                 System.out.println("No negative numbers. Choose another value.");
             }
 
