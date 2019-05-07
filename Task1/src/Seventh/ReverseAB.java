@@ -12,9 +12,11 @@ public class ReverseAB {
             int b = scanner.nextInt();
             System.out.println("a: " + a + ", b: " + b);
 
-            a += b;
-            b = a - b;
-            a -= b;
+            if (a != b) {
+                a += b;
+                b = a - b;
+                a -= b;
+            }
             System.out.println("New a: " + a + ", new b: " + b);
         }
         catch (InputMismatchException e) {

@@ -14,13 +14,27 @@ public class Average {
                 number = -number;
             }
 
+            // название переменной - номер цифры справа исходного числа
+            int first = number % 10;
+            int second = number / 10 % 10;
+            int third = number / 100 % 10;
+            int fourth = number / 1000 % 10;
+            int fifth = number / 10000 % 10;
+            int sixth = number / 100000 % 10;
+            int sumOfNumbers = first + second + third + fourth + fifth + sixth;
+            double multOfNumbers = first * second * third * fourth * fifth * sixth;
+            double arithmMean = (double) sumOfNumbers / 6;
+            double geomMean = Math.pow(multOfNumbers, 1.0 / 6);
+            System.out.println("The arithmetic mean of " + number + ": " + arithmMean);
+            System.out.println("The geometric mean of " + number + ": " + geomMean);
+
+            /* variant no.2
             int numb[] = new int[6];
             for (int i = 0; i < 6; i++) {
                 numb[i] = number / (int) Math.pow(10, i) % 10;
             }
             int sumOfNumbers = 0;
             double multOfNumbers = 1;
-
             for (int i = 0; i < 6; i++) {
                 sumOfNumbers += numb[i];
                 multOfNumbers *= numb[i];
@@ -28,7 +42,7 @@ public class Average {
             double arithmMean = (double) sumOfNumbers / 6;
             double geomMean = Math.pow(multOfNumbers, 1.0 / 6);
             System.out.println("The arithmetic mean of " + number + ": " + arithmMean);
-            System.out.println("The geometric mean of " + number + ": " + geomMean);
+            System.out.println("The geometric mean of " + number + ": " + geomMean);*/
         }
         catch (InputMismatchException e) {
             System.out.println("Don't use any symbols. Numbers only.");
