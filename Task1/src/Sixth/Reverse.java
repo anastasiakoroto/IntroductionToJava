@@ -10,8 +10,8 @@ public class Reverse {
         Scanner scanner = new Scanner(System.in);
         try {
             int number = scanner.nextInt();
-            int sixDigit = (int)Math.pow(10, 6);
-            int eightDigit = (int)Math.pow(10, 8);
+            int sixDigit = 999999;
+            int eightDigit = (int)Math.pow(10, 7);
             if (number < eightDigit && number > sixDigit) {
                 System.out.println("For number " + number + " the inverted number: " + reverse(number));
             }
@@ -26,10 +26,10 @@ public class Reverse {
 
     private static int reverse(int numb) {
 
-            // название переменной - номер цифры справа
+            // название переменной - номер цифры справа исходного числа
             int first = numb % 10;
-            int second = numb / (int) Math.pow(10, 1) % 10;
-            int third = numb / (int) Math.pow(10, 2) % 10;
+            int second = numb / 10 % 10;
+            int third = numb / 100 % 10;
             int forth = numb / (int) Math.pow(10, 3) % 10;
             int fifth = numb / (int) Math.pow(10, 4) % 10;
             int sixth = numb / (int) Math.pow(10, 5) % 10;
