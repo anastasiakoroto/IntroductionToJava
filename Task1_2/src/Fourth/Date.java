@@ -42,7 +42,6 @@ public class Date {
             }
             else {
                 wrong = 1;
-                System.out.println("Wrong data.");
             }
         }
         else if (m == 4 || m == 6 || m == 9 || m == 11) {
@@ -55,13 +54,12 @@ public class Date {
             }
             else {
                 wrong = 1;
-                System.out.println("Wrong data.");
             }
 
         }
         else if (m == 2) {
             if (leapYear == 1) {
-                if (d < 29) {
+                if (d < 29 && d > 0) {
                     d += 1;
                 }
                 else if (d == 29) {
@@ -70,11 +68,10 @@ public class Date {
                 }
                 else {
                     wrong = 1;
-                    System.out.println("Wrong data.");
                 }
             }
             else if (leapYear == 0) {
-                if (d < 28) {
+                if (d < 28 && d > 0) {
                     d += 1;
                 }
                 else if (d == 28) {
@@ -83,7 +80,6 @@ public class Date {
                 }
                 else {
                     wrong = 1;
-                    System.out.println("Wrong data.");
                 }
             }
         }
@@ -92,7 +88,7 @@ public class Date {
             System.out.println("The next day: " + d + "." + m + "." + y);
         }
         else {
-            System.out.println("Choose correct date.");
+            System.out.println("Wrong data. Choose correct date.");
         }
     }
 }
