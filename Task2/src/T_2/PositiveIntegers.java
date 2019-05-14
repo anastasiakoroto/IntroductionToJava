@@ -75,12 +75,8 @@ public class PositiveIntegers {
             }
             ++i;
         }
-        if (a == 0) {
-            ifSimple = false;
-        }
         return ifSimple;
     }
-
 
     private static void forth(int a) {
         int count = 0;
@@ -95,7 +91,6 @@ public class PositiveIntegers {
             System.out.println("The number hasn't simple dividers.");
         }
     }
-
 
     private static void fifth(int a, int b) {
         int nod = 0;
@@ -117,7 +112,7 @@ public class PositiveIntegers {
         }
         int j = 1;
         int suppose = larger * j;
-        while (suppose % larger == 0 && suppose % smaller != 0 ) {
+        while ((suppose % larger == 0) && (suppose % smaller != 0)) {
             j += 1;
             suppose = larger * j;
         }

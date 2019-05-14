@@ -8,6 +8,7 @@ public class HeadsOrTails {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
+
         System.out.println("Enter number of throws: ");
         try {
             int n = scanner.nextInt();

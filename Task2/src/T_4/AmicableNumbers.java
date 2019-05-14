@@ -1,21 +1,27 @@
 package T_4;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class amicableNumbers {
+public class AmicableNumbers {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Your diapason: ");
-        int a = scanner.nextInt();
-        int b = scanner.nextInt();
+        try {
+            int a = scanner.nextInt();
+            int b = scanner.nextInt();
 
-        for (int i = a; i <= b; i++) {
-            for (int j = a; j <= b; j++) {
-                if ((i != j) && amicable(i, j)) {
-                    System.out.println( i + " " + j + " - amicable numbers");
+            for (int i = a; i <= b; i++) {
+                for (int j = a; j <= b; j++) {
+                    if ((i != j) && amicable(i, j)) {
+                        System.out.println(i + " " + j + " - amicable numbers");
+                    }
                 }
             }
+        }
+        catch (InputMismatchException e) {
+            System.out.println("Wrong input. Use only positive numbers.");
         }
     }
 
