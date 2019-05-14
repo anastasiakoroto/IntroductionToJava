@@ -38,7 +38,7 @@ public class PositiveIntegers {
     }
 
 
-    public static int first (int a) {
+    private static int first (int a) {
         String number = String.valueOf(a);
         int maxNumb = 0;
         for (int i = 0; i < number.length(); i++) {
@@ -50,8 +50,7 @@ public class PositiveIntegers {
         return maxNumb;
     }
 
-
-    public static boolean second(int a) {
+    private static boolean second(int a) {
         String number = String.valueOf(a);
         boolean ifPalindrome = true;
         for (int i = 0; i < (number.length() - 1) / 2; i++) {
@@ -66,8 +65,7 @@ public class PositiveIntegers {
         return ifPalindrome;
     }
 
-
-    public static boolean third(int a) {
+    private static boolean third(int a) {
         boolean ifSimple = true;
         int i = 2;
         while (ifSimple && i < a) {
@@ -84,7 +82,7 @@ public class PositiveIntegers {
     }
 
 
-    public static void forth(int a) {
+    private static void forth(int a) {
         int count = 0;
         for (int i = 2; i < a; i++) {
             int divider = i;
@@ -99,7 +97,7 @@ public class PositiveIntegers {
     }
 
 
-    public static void fifth(int a, int b) {
+    private static void fifth(int a, int b) {
         int nod = 0;
         int nok;
         int smaller;
