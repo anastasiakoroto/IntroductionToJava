@@ -62,53 +62,6 @@ public class Matrix {
 
     }
 
-    static void transposition(double mas[][]) {
-
-        System.out.println("Matrix:");
-        for (int i = 0; i < mas.length; i++) {
-            for (int j = 0; j < mas[0].length; j++) {
-                System.out.print(" " + mas[i][j] + " ");
-            }
-            System.out.print('\n');
-        }
-
-        if (mas.length == mas[0].length) {
-            for (int i = 0; i < mas.length; i++) {
-                for (int j = i; j < mas[0].length; j++) {
-                    if (mas[i][j] != mas[j][i]) {
-                        mas[i][j] += mas[j][i];
-                        mas[j][i] = mas[i][j] - mas[j][i];
-                        mas[i][j] -= mas[j][i];
-                    }
-                }
-            }
-            System.out.println();
-            System.out.println("Transposed square matrix: ");
-            for (int i = 0; i < mas.length; i++) {
-                for (int j = 0; j < mas[0].length; j++) {
-                    System.out.print(" " + mas[i][j] + " ");
-                }
-                System.out.print('\n');
-            }
-        }
-        else {
-            double transposedMatrix[][] = new double[mas[0].length][mas.length];
-            for (int i = 0; i < mas.length; i++) {
-                for (int j = 0; j < mas[0].length; j++) {
-                    transposedMatrix[j][i] = mas[i][j];
-                }
-            }
-            System.out.println();
-            System.out.println("Transposed rectangle matrix: ");
-            for (int i = 0; i < transposedMatrix.length; i++) {
-                for (int j = 0; j < transposedMatrix[0].length; j++) {
-                    System.out.print(" " + transposedMatrix[i][j] + " ");
-                }
-                System.out.print('\n');
-            }
-        }
-    }
-
     static void localMin(double mas[][]) {
         double localMin = 1000000000;
         int row = -1;
@@ -116,62 +69,73 @@ public class Matrix {
         boolean ifFound = false;
         for (int i = 0; i < mas.length; i++) {
             for(int j = 0; j < mas[0].length; j++) {
-                if (mas[i][j] == mas[0][j]) { // верхняя строка
-                    if (mas[i][j] != mas[0][0] && mas[i][j] != mas[0][mas[0].length - 1]
-                            && mas[i][j] < mas[i][j - 1] && mas[i][j] < mas[i][j + 1] && mas[i][j] < mas[i + 1][j]){
-                        localMin = mas[i][j];
-                        row = i;
-                        column = j;
-                        ifFound = true;
-                        break;
-                    }
-                }
-                else if (mas[i][j] == mas[i][0]) { // левый столбец
-                    if (mas[i][j] != mas[0][0] && mas[i][j] != mas[mas.length - 1][0] && mas[i][j] < mas[i - 1][j]
-                            && mas[i][j] < mas[i + 1][j] && mas[i][j] < mas[i][j + 1]) {
-                        localMin = mas[i][j];
-                        row = i;
-                        column = j;
-                        ifFound = true;
-                        break;
-                    }
-                }
-                else if (mas[i][j] == mas[mas.length - 1][j]) { // последняя строка
-                    if (mas[i][j] != mas[mas.length - 1][0] && mas[i][j] != mas[mas.length - 1][mas[0].length - 1]
-                            && mas[i][j] < mas[i][j - 1] && mas[i][j] < mas[i - 1][j] && mas[i][j] < mas[i][j + 1]) {
-                        localMin = mas[i][j];
-                        row = i;
-                        column = j;
-                        ifFound = true;
-                        break;
-                    }
-                }
-                else if (mas[i][j] == mas[i][mas[0].length - 1]) { // правый столбец
-                    if (mas[i][j] != mas[0][mas[0].length - 1] &&
-                            mas[i][j] != mas[mas.length - 1][mas[0].length - 1] && mas[i][j] < mas[i - 1][j]
-                            && mas[i][j] < mas[i + 1][j] && mas[i][j] < mas[i][j - 1]) {
-                        localMin = mas[i][j];
-                        row = i;
-                        column = j;
-                        ifFound = true;
-                        break;
-                    }
-                }
-                else if (mas[i][j] < mas[i - 1][j] && mas[i][j] < mas[i][j + 1]
-                        && mas[i][j] < mas[i + 1][j] && mas[i][j] < mas[i][j - 1]) {
+                // верхняя строка
+                if ((mas[i][j] == mas[0][j])
+                        && (mas[i][j] != mas[0][0])
+                        && (mas[i][j] != mas[0][mas[0].length - 1])
+                        && (mas[i][j] < mas[i][j - 1])
+                        && (mas[i][j] < mas[i][j + 1])
+                        && (mas[i][j] < mas[i + 1][j])) {
                     localMin = mas[i][j];
                     row = i;
                     column = j;
                     ifFound = true;
                     break;
                 }
-
+                // левый столбец
+                else if ((mas[i][j] == mas[i][0])
+                        && (mas[i][j] != mas[0][0])
+                        && (mas[i][j] != mas[mas.length - 1][0])
+                        && (mas[i][j] < mas[i - 1][j])
+                        && (mas[i][j] < mas[i + 1][j])
+                        && (mas[i][j] < mas[i][j + 1])) {
+                    localMin = mas[i][j];
+                    row = i;
+                    column = j;
+                    ifFound = true;
+                    break;
+                }
+                // последняя строка
+                else if ((mas[i][j] == mas[mas.length - 1][j])
+                        && (mas[i][j] != mas[mas.length - 1][0])
+                        && (mas[i][j] != mas[mas.length - 1][mas[0].length - 1])
+                        && (mas[i][j] < mas[i][j - 1])
+                        && (mas[i][j] < mas[i - 1][j])
+                        && (mas[i][j] < mas[i][j + 1])) {
+                    localMin = mas[i][j];
+                    row = i;
+                    column = j;
+                    ifFound = true;
+                    break;
+                }
+                // правый столбец
+                else if ((mas[i][j] == mas[i][mas[0].length - 1])
+                        && (mas[i][j] != mas[0][mas[0].length - 1])
+                        && (mas[i][j] != mas[mas.length - 1][mas[0].length - 1])
+                        && (mas[i][j] < mas[i - 1][j])
+                        && (mas[i][j] < mas[i + 1][j])
+                        && (mas[i][j] < mas[i][j - 1])) {
+                    localMin = mas[i][j];
+                    row = i;
+                    column = j;
+                    ifFound = true;
+                    break;
+                }
+                else if ((mas[i][j] < mas[i - 1][j])
+                        && (mas[i][j] < mas[i][j + 1])
+                        && (mas[i][j] < mas[i + 1][j])
+                        && (mas[i][j] < mas[i][j - 1])) {
+                    localMin = mas[i][j];
+                    row = i;
+                    column = j;
+                    ifFound = true;
+                    break;
+                }
             }
             if (ifFound == true) {
                 break;
             }
         }
-
         if (row == -1) {
             System.out.println("No local minimum.");
         }
@@ -188,49 +152,62 @@ public class Matrix {
         boolean ifFound = false;
         for (int i = 0; i < mas.length; i++) {
             for(int j = 0; j < mas[0].length; j++) {
-                if (mas[i][j] == mas[0][j]) { // верхняя строка
-                    if (mas[i][j] != mas[0][0] && mas[i][j] != mas[0][mas[0].length - 1]
-                            && mas[i][j] > mas[i][j - 1] && mas[i][j] > mas[i][j + 1] && mas[i][j] > mas[i + 1][j]){
-                        localMax = mas[i][j];
-                        row = i;
-                        column = j;
-                        ifFound = true;
-                        break;
-                    }
+                // для верхней строки
+                if ((mas[i][j] == mas[0][j])
+                        && (mas[i][j] != mas[0][0])
+                        && (mas[i][j] != mas[0][mas[0].length - 1])
+                        && (mas[i][j] > mas[i][j - 1])
+                        && (mas[i][j] > mas[i][j + 1])
+                        && (mas[i][j] > mas[i + 1][j])) {
+                    localMax = mas[i][j];
+                    row = i;
+                    column = j;
+                    ifFound = true;
+                    break;
                 }
-                else if (mas[i][j] == mas[i][0]) { // левый столбец
-                    if (mas[i][j] != mas[0][0] && mas[i][j] != mas[mas.length - 1][0] && mas[i][j] > mas[i - 1][j]
-                            && mas[i][j] > mas[i + 1][j] && mas[i][j] > mas[i][j + 1]) {
-                        localMax = mas[i][j];
-                        row = i;
-                        column = j;
-                        ifFound = true;
-                        break;
-                    }
+                // для левого столбца
+                else if ((mas[i][j] == mas[i][0])
+                        && (mas[i][j] != mas[0][0])
+                        && (mas[i][j] != mas[mas.length - 1][0])
+                        && (mas[i][j] > mas[i - 1][j])
+                        && (mas[i][j] > mas[i + 1][j])
+                        && (mas[i][j] > mas[i][j + 1])) {
+                    localMax = mas[i][j];
+                    row = i;
+                    column = j;
+                    ifFound = true;
+                    break;
                 }
-                else if (mas[i][j] == mas[mas.length - 1][j]) { // последняя строка
-                    if (mas[i][j] != mas[mas.length - 1][0] && mas[i][j] != mas[mas.length - 1][mas[0].length - 1]
-                            && mas[i][j] > mas[i][j - 1] && mas[i][j] > mas[i - 1][j] && mas[i][j] > mas[i][j + 1]) {
-                        localMax = mas[i][j];
-                        row = i;
-                        column = j;
-                        ifFound = true;
-                        break;
-                    }
+                // для последней строки
+                else if ((mas[i][j] == mas[mas.length - 1][j])
+                        && (mas[i][j] != mas[mas.length - 1][0])
+                        && (mas[i][j] != mas[mas.length - 1][mas[0].length - 1])
+                        && (mas[i][j] > mas[i][j - 1])
+                        && (mas[i][j] > mas[i - 1][j])
+                        && (mas[i][j] > mas[i][j + 1])) {
+                    localMax = mas[i][j];
+                    row = i;
+                    column = j;
+                    ifFound = true;
+                    break;
                 }
-                else if (mas[i][j] == mas[i][mas[0].length - 1]) { // правый столбец
-                    if (mas[i][j] != mas[0][mas[0].length - 1] &&
-                            mas[i][j] != mas[mas.length - 1][mas[0].length - 1] && mas[i][j] > mas[i - 1][j]
-                            && mas[i][j] > mas[i + 1][j] && mas[i][j] > mas[i][j - 1]) {
-                        localMax = mas[i][j];
-                        row = i;
-                        column = j;
-                        ifFound = true;
-                        break;
-                    }
+                // для правого столбца
+                else if ((mas[i][j] == mas[i][mas[0].length - 1])
+                        && (mas[i][j] != mas[0][mas[0].length - 1])
+                        && (mas[i][j] != mas[mas.length - 1][mas[0].length - 1])
+                        && (mas[i][j] > mas[i - 1][j])
+                        && (mas[i][j] > mas[i + 1][j])
+                        && (mas[i][j] > mas[i][j - 1])) {
+                    localMax = mas[i][j];
+                    row = i;
+                    column = j;
+                    ifFound = true;
+                    break;
                 }
-                else if (mas[i][j] > mas[i - 1][j] && mas[i][j] > mas[i][j + 1]
-                        && mas[i][j] > mas[i + 1][j] && mas[i][j] > mas[i][j - 1]) {
+                else if ((mas[i][j] > mas[i - 1][j])
+                        && (mas[i][j] > mas[i][j + 1])
+                        && (mas[i][j] > mas[i + 1][j])
+                        && (mas[i][j] > mas[i][j - 1])) {
                     localMax = mas[i][j];
                     row = i;
                     column = j;
@@ -529,5 +506,51 @@ public class Matrix {
         }
     }
 
+    static void transposition(double mas[][]) {
+
+        System.out.println("Matrix:");
+        for (int i = 0; i < mas.length; i++) {
+            for (int j = 0; j < mas[0].length; j++) {
+                System.out.print(" " + mas[i][j] + " ");
+            }
+            System.out.print('\n');
+        }
+
+        if (mas.length == mas[0].length) {
+            for (int i = 0; i < mas.length; i++) {
+                for (int j = i; j < mas[0].length; j++) {
+                    if (mas[i][j] != mas[j][i]) {
+                        mas[i][j] += mas[j][i];
+                        mas[j][i] = mas[i][j] - mas[j][i];
+                        mas[i][j] -= mas[j][i];
+                    }
+                }
+            }
+            System.out.println();
+            System.out.println("Transposed square matrix: ");
+            for (int i = 0; i < mas.length; i++) {
+                for (int j = 0; j < mas[0].length; j++) {
+                    System.out.print(" " + mas[i][j] + " ");
+                }
+                System.out.print('\n');
+            }
+        }
+        else {
+            double transposedMatrix[][] = new double[mas[0].length][mas.length];
+            for (int i = 0; i < mas.length; i++) {
+                for (int j = 0; j < mas[0].length; j++) {
+                    transposedMatrix[j][i] = mas[i][j];
+                }
+            }
+            System.out.println();
+            System.out.println("Transposed rectangle matrix: ");
+            for (int i = 0; i < transposedMatrix.length; i++) {
+                for (int j = 0; j < transposedMatrix[0].length; j++) {
+                    System.out.print(" " + transposedMatrix[i][j] + " ");
+                }
+                System.out.print('\n');
+            }
+        }
+    }
 
 }
