@@ -69,7 +69,7 @@ public class Matrix {
         boolean ifFound = false;
         for (int i = 0; i < mas.length; i++) {
             for(int j = 0; j < mas[0].length; j++) {
-                // верхняя строка
+                // для верхней строки
                 if ((mas[i][j] == mas[0][j])
                         && (mas[i][j] != mas[0][0])
                         && (mas[i][j] != mas[0][mas[0].length - 1])
@@ -82,7 +82,7 @@ public class Matrix {
                     ifFound = true;
                     break;
                 }
-                // левый столбец
+                // для левого столбца
                 else if ((mas[i][j] == mas[i][0])
                         && (mas[i][j] != mas[0][0])
                         && (mas[i][j] != mas[mas.length - 1][0])
@@ -95,7 +95,7 @@ public class Matrix {
                     ifFound = true;
                     break;
                 }
-                // последняя строка
+                // для последней строки
                 else if ((mas[i][j] == mas[mas.length - 1][j])
                         && (mas[i][j] != mas[mas.length - 1][0])
                         && (mas[i][j] != mas[mas.length - 1][mas[0].length - 1])
@@ -108,7 +108,7 @@ public class Matrix {
                     ifFound = true;
                     break;
                 }
-                // правый столбец
+                // для правого столбца
                 else if ((mas[i][j] == mas[i][mas[0].length - 1])
                         && (mas[i][j] != mas[0][mas[0].length - 1])
                         && (mas[i][j] != mas[mas.length - 1][mas[0].length - 1])
