@@ -59,7 +59,6 @@ public class Matrix {
             System.out.println("Arithmetic average of matrix: " + avgArithm);
             System.out.println("Geometric average doesn't exist.");
         }
-
     }
 
     static void localMin(double mas[][]) {
@@ -214,7 +213,6 @@ public class Matrix {
                     ifFound = true;
                     break;
                 }
-
             }
             if (ifFound == true) {
                 break;
@@ -229,6 +227,52 @@ public class Matrix {
         }
     }
 
+    static void transposition(double mas[][]) {
+        System.out.println("Matrix:");
+        for (int i = 0; i < mas.length; i++) {
+            for (int j = 0; j < mas[0].length; j++) {
+                System.out.print(" " + mas[i][j] + " ");
+            }
+            System.out.print('\n');
+        }
+        if (mas.length == mas[0].length) {
+            for (int i = 0; i < mas.length; i++) {
+                for (int j = i; j < mas[0].length; j++) {
+                    if (mas[i][j] != mas[j][i]) {
+                        mas[i][j] += mas[j][i];
+                        mas[j][i] = mas[i][j] - mas[j][i];
+                        mas[i][j] -= mas[j][i];
+                    }
+                }
+            }
+            System.out.println();
+            System.out.println("Transposed square matrix: ");
+            for (int i = 0; i < mas.length; i++) {
+                for (int j = 0; j < mas[0].length; j++) {
+                    System.out.print(" " + mas[i][j] + " ");
+                }
+                System.out.print('\n');
+            }
+        }
+        else {
+            double transposedMatrix[][] = new double[mas[0].length][mas.length];
+            for (int i = 0; i < mas.length; i++) {
+                for (int j = 0; j < mas[0].length; j++) {
+                    transposedMatrix[j][i] = mas[i][j];
+                }
+            }
+            System.out.println();
+            System.out.println("Transposed rectangle matrix: ");
+            for (int i = 0; i < transposedMatrix.length; i++) {
+                for (int j = 0; j < transposedMatrix[0].length; j++) {
+                    System.out.print(" " + transposedMatrix[i][j] + " ");
+                }
+                System.out.print('\n');
+            }
+        }
+    }
+
+    /*
     static void localMin_2(double mas[][]) {
         double localMin = 1000000000;
         int row = -1;
@@ -505,52 +549,5 @@ public class Matrix {
                     + ". The indexes of local maximum: row = " + row + ", column = " + column + ".");
         }
     }
-
-    static void transposition(double mas[][]) {
-
-        System.out.println("Matrix:");
-        for (int i = 0; i < mas.length; i++) {
-            for (int j = 0; j < mas[0].length; j++) {
-                System.out.print(" " + mas[i][j] + " ");
-            }
-            System.out.print('\n');
-        }
-
-        if (mas.length == mas[0].length) {
-            for (int i = 0; i < mas.length; i++) {
-                for (int j = i; j < mas[0].length; j++) {
-                    if (mas[i][j] != mas[j][i]) {
-                        mas[i][j] += mas[j][i];
-                        mas[j][i] = mas[i][j] - mas[j][i];
-                        mas[i][j] -= mas[j][i];
-                    }
-                }
-            }
-            System.out.println();
-            System.out.println("Transposed square matrix: ");
-            for (int i = 0; i < mas.length; i++) {
-                for (int j = 0; j < mas[0].length; j++) {
-                    System.out.print(" " + mas[i][j] + " ");
-                }
-                System.out.print('\n');
-            }
-        }
-        else {
-            double transposedMatrix[][] = new double[mas[0].length][mas.length];
-            for (int i = 0; i < mas.length; i++) {
-                for (int j = 0; j < mas[0].length; j++) {
-                    transposedMatrix[j][i] = mas[i][j];
-                }
-            }
-            System.out.println();
-            System.out.println("Transposed rectangle matrix: ");
-            for (int i = 0; i < transposedMatrix.length; i++) {
-                for (int j = 0; j < transposedMatrix[0].length; j++) {
-                    System.out.print(" " + transposedMatrix[i][j] + " ");
-                }
-                System.out.print('\n');
-            }
-        }
-    }
-
+     */
 }
