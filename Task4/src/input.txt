@@ -1,0 +1,105 @@
+Excursion
+The Netherlands
+Bus
+5 days
+Three meals
+200$
+
+Cruise
+Denmark
+Ship
+5 days
+Five meals with breakfast buffet
+350$
+
+Treatment
+Switzerland
+Plane
+13 days
+Five meals
+1890$
+
+Shopping
+Italy
+Plane
+3 days
+Three meals with breakfast buffet
+550$
+
+Relax
+Greece
+Train
+9 days
+Five meals with breakfast buffet
+790$
+
+Excursion
+Germany
+Bus
+9 days
+Three meals with breakfast buffet
+690$
+
+Shopping
+Poland
+Train
+3 days
+Two meals
+150$
+
+Cruise
+Italy
+Plane + Ship
+13 days
+Three meals with breakfast buffet
+2060$
+
+Relax
+Israel
+Bus
+5 days
+Three meals
+450$
+
+Treatment
+Belarus
+Train
+9 days
+Five meals
+660$
+
+Excursion
+Prague
+Bus
+5 days
+Two meals
+400$
+
+Relax
+Bulgaria
+Plane
+13 days
+Three meals with breakfast buffet
+1085$
+
+Cruise
+Spain
+Bus + Ship
+9 days
+Three meals
+1000$
+
+Treatment
+Norway
+Train + Ship
+9 days
+Three meals + breakfast buffet
+1250$
+
+Shopping
+France
+Bus
+5 days
+Two meals
+350$
+
