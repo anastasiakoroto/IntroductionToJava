@@ -1,6 +1,7 @@
 package Enumeration;
 
 public enum TypesOfMeal {
+    TWO ("Two meals"),
     THREE ("Three meals"),
     FIVE ("Five meals"),
     THREE_PLUS ("Three meals with breakfast buffet."),

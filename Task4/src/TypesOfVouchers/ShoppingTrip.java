@@ -18,7 +18,6 @@ public class ShoppingTrip extends TripCharacteristic {
                 i--;
             }
         }
-
     }
 
     @Override
@@ -27,33 +26,24 @@ public class ShoppingTrip extends TripCharacteristic {
             List<String> vouchers = arr.get(i);
             String meal = vouchers.get(4);
             if (chosen == 1) {
-                if (!meal.equals(TypesOfMeal.THREE.getType())) {
+                if (!meal.equals(TypesOfMeal.TWO.getType())) {
                     arr.remove(i);
                     i--;
                 }
             }
             else if (chosen == 2) {
-                if (!meal.equals(TypesOfMeal.FIVE.getType())) {
+                if (!meal.equals(TypesOfMeal.THREE.getType())) {
                     arr.remove(i);
                     i--;
                 }
             }
-            else if (chosen == 3) {
+            else if (chosen == 4) {
                 if (!meal.equals(TypesOfMeal.THREE_PLUS.getType())) {
                     arr.remove(i);
                     i--;
                 }
-
             }
-            else if (chosen == 4) {
-                if (!meal.equals(TypesOfMeal.FIVE_PLUS.getType())) {
-                    arr.remove(i);
-                    i--;
-                }
-            }
-
         }
-
     }
 
     @Override
@@ -81,6 +71,30 @@ public class ShoppingTrip extends TripCharacteristic {
             }
             else if (chosenTr == 4) {
                 if (!transport.equals(TypesOfTransport.SHIP.getType())) {
+                    arrayList.remove(i);
+                    i--;
+                }
+            }
+            else if (chosenTr == 5) {
+                if (!transport.equals(TypesOfTransport.BUS_SHIP.getType())) {
+                    arrayList.remove(i);
+                    i--;
+                }
+            }
+            else if (chosenTr == 6) {
+                if (!transport.equals(TypesOfTransport.TRAIN_SHIP.getType())) {
+                    arrayList.remove(i);
+                    i--;
+                }
+            }
+            else if (chosenTr == 7) {
+                if (!transport.equals(TypesOfTransport.PLANE_SHIP.getType())) {
+                    arrayList.remove(i);
+                    i--;
+                }
+            }
+            else if (chosenTr == 8) {
+                if (!transport.equals(TypesOfTransport.BUS_PLANE.getType())) {
                     arrayList.remove(i);
                     i--;
                 }

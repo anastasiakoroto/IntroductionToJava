@@ -25,34 +25,25 @@ public class TreatmentTrip extends TripCharacteristic {
         for (int i = 0; i < arr.size(); i++) {
             List<String> vouchers = arr.get(i);
             String meal = vouchers.get(4);
-            if (chosen == 1) {
+            if (chosen == 2) {
                 if (!meal.equals(TypesOfMeal.THREE.getType())) {
                     arr.remove(i);
                     i--;
                 }
             }
-            else if (chosen == 2) {
+            else if (chosen == 3) {
                 if (!meal.equals(TypesOfMeal.FIVE.getType())) {
                     arr.remove(i);
                     i--;
                 }
             }
-            else if (chosen == 3) {
-                if (!meal.equals(TypesOfMeal.THREE_PLUS.getType())) {
-                    arr.remove(i);
-                    i--;
-                }
-
-            }
-            else if (chosen == 4) {
+            else if (chosen == 5) {
                 if (!meal.equals(TypesOfMeal.FIVE_PLUS.getType())) {
                     arr.remove(i);
                     i--;
                 }
             }
-
         }
-
     }
 
     @Override
@@ -80,6 +71,24 @@ public class TreatmentTrip extends TripCharacteristic {
             }
             else if (chosenTr == 4) {
                 if (!transport.equals(TypesOfTransport.SHIP.getType())) {
+                    arrayList.remove(i);
+                    i--;
+                }
+            }
+            else if (chosenTr == 5) {
+                if (!transport.equals(TypesOfTransport.BUS_SHIP.getType())) {
+                    arrayList.remove(i);
+                    i--;
+                }
+            }
+            else if (chosenTr == 7) {
+                if (!transport.equals(TypesOfTransport.PLANE_SHIP.getType())) {
+                    arrayList.remove(i);
+                    i--;
+                }
+            }
+            else if (chosenTr == 8) {
+                if (!transport.equals(TypesOfTransport.BUS_PLANE.getType())) {
                     arrayList.remove(i);
                     i--;
                 }
