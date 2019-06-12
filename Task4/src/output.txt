@@ -1,0 +1,29 @@
+Your parameters:
+Cruise
+
+Our company found such results for you:
+Results: 3
+The tour #1:
+Cruise
+Denmark
+Ship
+5 days
+Five meals with breakfast buffet
+350$
+
+The tour #2:
+Cruise
+Italy
+Plane + Ship
+13 days
+Three meals with breakfast buffet
+2060$
+
+The tour #3:
+Cruise
+Spain
+Bus + Ship
+9 days
+Three meals
+1000$
+
