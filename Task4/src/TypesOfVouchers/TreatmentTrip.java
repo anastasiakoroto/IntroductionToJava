@@ -7,7 +7,12 @@ import Enumeration.VoucherType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TreatmentTrip extends TripCharacteristic {
+public class TreatmentTrip extends Trip {
+
+    TreatmentTrip(String typeVoucher, int meals, int transport) {
+        super(typeVoucher, meals, transport);
+    }
+
     @Override
     public void chosenType(ArrayList<ArrayList> listAr) {
         for (int i = 0; i < listAr.size(); i++) {
@@ -21,23 +26,23 @@ public class TreatmentTrip extends TripCharacteristic {
     }
 
     @Override
-    public void chosenMeal(ArrayList<ArrayList> arr, int chosen) {
+    public void chosenMeal(ArrayList<ArrayList> arr) {
         for (int i = 0; i < arr.size(); i++) {
             List<String> vouchers = arr.get(i);
             String meal = vouchers.get(4);
-            if (chosen == 2) {
+            if (getMealType() == 2) {
                 if (!meal.equals(TypesOfMeal.THREE.getType())) {
                     arr.remove(i);
                     i--;
                 }
             }
-            else if (chosen == 3) {
+            else if (getMealType() == 3) {
                 if (!meal.equals(TypesOfMeal.FIVE.getType())) {
                     arr.remove(i);
                     i--;
                 }
             }
-            else if (chosen == 5) {
+            else if (getMealType() == 5) {
                 if (!meal.equals(TypesOfMeal.FIVE_PLUS.getType())) {
                     arr.remove(i);
                     i--;
@@ -47,47 +52,47 @@ public class TreatmentTrip extends TripCharacteristic {
     }
 
     @Override
-    public void chosenTransport(ArrayList<ArrayList> arrayList, int chosenTr) {
+    public void chosenTransport(ArrayList<ArrayList> arrayList) {
         for (int i = 0; i < arrayList.size(); i++) {
             List<String> vouchers = arrayList.get(i);
             String transport = vouchers.get(2);
-            if (chosenTr == 1) {
+            if (getTransportType() == 1) {
                 if (!transport.equals(TypesOfTransport.BUS.getType())) {
                     arrayList.remove(i);
                     i--;
                 }
             }
-            else if (chosenTr == 2) {
+            else if (getTransportType() == 2) {
                 if (!transport.equals(TypesOfTransport.TRAIN.getType())) {
                     arrayList.remove(i);
                     i--;
                 }
             }
-            else if (chosenTr == 3) {
+            else if (getTransportType() == 3) {
                 if (!transport.equals(TypesOfTransport.PLANE.getType())) {
                     arrayList.remove(i);
                     i--;
                 }
             }
-            else if (chosenTr == 4) {
+            else if (getTransportType() == 4) {
                 if (!transport.equals(TypesOfTransport.SHIP.getType())) {
                     arrayList.remove(i);
                     i--;
                 }
             }
-            else if (chosenTr == 5) {
+            else if (getTransportType() == 5) {
                 if (!transport.equals(TypesOfTransport.BUS_SHIP.getType())) {
                     arrayList.remove(i);
                     i--;
                 }
             }
-            else if (chosenTr == 7) {
+            else if (getTransportType() == 7) {
                 if (!transport.equals(TypesOfTransport.PLANE_SHIP.getType())) {
                     arrayList.remove(i);
                     i--;
                 }
             }
-            else if (chosenTr == 8) {
+            else if (getTransportType() == 8) {
                 if (!transport.equals(TypesOfTransport.BUS_PLANE.getType())) {
                     arrayList.remove(i);
                     i--;

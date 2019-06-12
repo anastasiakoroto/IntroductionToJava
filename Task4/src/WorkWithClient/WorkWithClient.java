@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class WorkWithClient {
     public static void consultClient() {
 
-        // read file
+        // file input
         ArrayList<ArrayList> arrayList = new ArrayList<>();
         Scanner scanner;
         try {
@@ -98,10 +98,84 @@ public class WorkWithClient {
         }
 
         // processing of client choice
-        switch (typeOfVoucher) {
+        StructureOfTrip.structure(typeOfVoucher, arrayList, chosenMeal, chosenTransport);
+
+        System.out.println("Sort by: 0 - no sort, 1 - transport, 2 - country and transport");
+        int chosenSort = 0;
+        try {
+            chosenSort = sc.nextInt();
+        }
+        catch (InputMismatchException e) {
+            System.out.println("Use numbers only.");
+        }
+
+        if (chosenSort == 1) {
+            StructureOfTrip.sortByTransport(arrayList);
+        } else if (chosenSort == 2) {
+            StructureOfTrip.sortByCountryAndTransport(arrayList);
+        } else if (chosenSort == 0) {
+            System.out.println("Continue without sort.");
+        } else {
+            //throw new InputMismatchException("Wrong input.");
+            System.out.println("Wrong input. Continue without sort.");
+        }
+
+        System.out.println("Our company found such vouchers for you: ");
+        System.out.println("Results: " + arrayList.size());
+        if (arrayList.size() != 0) {
+            for (int j = 0; j < arrayList.size(); j++) {
+                System.out.println("The tour #" + (j + 1) + ":");
+                for (int k = 0; k < arrayList.get(j).size(); k++) {
+                    System.out.println(arrayList.get(j).get(k));
+                }
+                System.out.println();
+            }
+        }
+        else {
+            System.out.println("Unfortunately, we don't have tours with such parameters.");
+            System.out.println("Could we suggest you another voucher?");
+        }
+
+        FileWriter fileWriter;
+        try {
+            fileWriter = new FileWriter("output.txt");
+            fileWriter.write("Your parameters: " + "\n");
+            for (VoucherType vt : VoucherType.values()) {
+                if ((vt.ordinal() + 1) == typeOfVoucher)
+                    fileWriter.write(vt.getType() + "\n");
+            }
+            for (TypesOfTransport tt : TypesOfTransport.values()) {
+                if ((tt.ordinal() + 1) == chosenTransport) {
+                    fileWriter.write(tt.getType() + "\n");
+                }
+            }
+            for (TypesOfMeal tm : TypesOfMeal.values()) {
+                if ((tm.ordinal() + 1) == chosenMeal) {
+                    fileWriter.write(tm.getType() + "\n");
+                }
+            }
+            //fileWriter.write();
+            fileWriter.write("\n" + "Our company found such results for you: \n");
+            fileWriter.write("Results: " + arrayList.size() + "\n");
+            for (int j = 0; j < arrayList.size(); j++) {
+                fileWriter.write("The tour #" + (j + 1) + ":\n");
+                for (int k = 0; k < arrayList.get(j).size(); k++) {
+                    fileWriter.write(arrayList.get(j).get(k) + "\n");
+                }
+                fileWriter.write("\n");
+            }
+            fileWriter.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+/*switch (typeOfVoucher) {
             case 1:
+                // VoucherTest v1 = new VoucherTest(VoucherType.EXCURSION.getType(), chosenMeal, chosenTransport);
                 ExcursionTrip excursionType = new ExcursionTrip();
-                excursionType.chosenType(arrayList);
                 excursionType.chosenMeal(arrayList, chosenMeal);
                 excursionType.chosenTransport(arrayList, chosenTransport);
                 break;
@@ -133,46 +207,4 @@ public class WorkWithClient {
                 //throw new InputMismatchException("Wrong input!");
                 System.out.println("Wrong input. Try again.");
                 break;
-        }
-
-        System.out.println("Our company found such vouchers for you: ");
-        System.out.println("Results: " + arrayList.size());
-        if (arrayList.size() != 0) {
-            for (int j = 0; j < arrayList.size(); j++) {
-                System.out.println("The tour #" + (j + 1) + ":");
-                for (int k = 0; k < arrayList.get(j).size(); k++) {
-                    System.out.println(arrayList.get(j).get(k));
-                }
-                System.out.println();
-            }
-        }
-        else {
-            System.out.println("Unfortunately, we don't have tours with such parameters.");
-            System.out.println("Could we suggest you another voucher?");
-        }
-
-        // write results to file
-        FileWriter fileWriter;
-        try {
-            fileWriter = new FileWriter("output.txt");
-            fileWriter.write("Our company found such results for you: \n");
-            fileWriter.write("Results: " + arrayList.size() + "\n");
-            if (arrayList.size() != 0) {
-                for (int j = 0; j < arrayList.size(); j++) {
-                    fileWriter.write("The tour #" + (j + 1) + ":\n");
-                    for (int k = 0; k < arrayList.get(j).size(); k++) {
-                        fileWriter.write(arrayList.get(j).get(k) + "\n");
-                    }
-                    fileWriter.write("\n");
-                }
-                fileWriter.close();
-            } else {
-                System.out.println("Unfortunately, we don't have tours with such parameters.");
-                System.out.println("Could we suggest you another voucher?");
-            }
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-}
+        }*/
